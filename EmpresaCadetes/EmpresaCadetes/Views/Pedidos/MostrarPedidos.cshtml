@@ -3,7 +3,7 @@
 *@
 @{
 }
-@model List<EmpresaCadetes.Entidades.Pedidos>
+@model EmpresaCadetes.Entidades.Cadeteria
 
 <div class="text-center">
     <h1 class="display-4">LISTAS DE PEDIDOS</h1>
@@ -22,31 +22,50 @@
             <div class="col-sm">
                 <h3>Estado</h3>
             </div>
+            <div class="col-sm">
+                <h3>Cadetes</h3>
+            </div>
 
         </div>
     </div>
 
+    
+            @foreach (var item in Model.MisPedidos)
+            {
+                
+                        <form asp-action="MostrarPedidos" asp-controller="Pedidos">
+                            <div class="row">
+                                <div class="col" title="id" hidden>
+                                    <input type="number" name="idPedido" value="@item.Numero" />
+                                </div>
+                                <div class="col" title="id">
+                                    @item.Numero
+                                </div>
+                                <div class="col" title="Nombre">
+                                    @item.Observacion
 
-    @foreach (var item in Model)
-    {
+                                </div>
+                                <div class="col" title="Direccion">
+                                    @item.NewCliente.Nombre
 
-        <div class="row">
-            <div class="col" title="id">
-                @item.Numero
-            </div>
-            <div class="col" title="Nombre">
-                @item.Observacion
+                                </div>
+                                <div class="col" title="Estado">
+                                    @item.Estado
 
-            </div>
-            <div class="col" title="Direccion">
-                @item.NewCliente.Nombre
+                                </div>
 
-            </div>
-            <div class="col" title="Telefeno">
-                @item.Estado
+                                <div class="col" title="Telefeno" name="idCadete">
+                                    <select class="align-items-xl-baseline">
+                                        @foreach (var item2 in Model.MisCadetes)
+                                        {
+                                            <option value="@item2.Id">  @item2.Nombre</option>
+                                        }
+                                    </select>
 
-            </div>
-        </div>
-    }
+                                </div>
+                                <input class="border-right" type="submit" name="AgregarPedido" value="Seleccionar" />
+                            </div>
+                         </form>
+            }
 
 </div>

@@ -14,12 +14,12 @@ namespace EmpresaCadetes.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly List<Cadete> cadetes;
+        
 
-        public HomeController(ILogger<HomeController> logger,List<Cadete> cadetes)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            this.cadetes = cadetes;
+            
             _logger.LogDebug(1, "NLog injected into HomeController");
         }
 

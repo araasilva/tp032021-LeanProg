@@ -19,15 +19,23 @@ namespace EmpresaCadetes.Entidades
             this.nombre = nombre;
             this.direcion = direcion;
             this.telefono = telefono;
-           
+            listapedidos = new List<Pedidos>();
         }
 
-        public void agregarListadepeditos(List<Pedidos> pedidosparaelCadete)
+        public void AgregarListadepeditos(Pedidos pedidosparaelCadete)
         {
-            listapedidos = pedidosparaelCadete;
+            listapedidos.Add(pedidosparaelCadete);
         
         }
+        public void QuitarListadepeditos(Pedidos pedido)
+        {
+            if (listapedidos.Contains(pedido))
+            {
+                listapedidos.Remove(pedido);
+            }
+            
 
+        }
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Direcion { get => direcion; set => direcion = value; }

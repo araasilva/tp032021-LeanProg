@@ -15,8 +15,10 @@ namespace EmpresaCadetes
 {
     public class Startup
     {
-        static List<Cadete> listacadetes = new List<Cadete>();
+       /* static List<Cadete> listacadetes = new List<Cadete>();
         static List<Pedidos> listapedidos = new List<Pedidos>();
+        static List<Cliente> listaclientes = new List<Cliente>();*/
+        Cadeteria cadeteria = new Cadeteria();
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,8 +30,9 @@ namespace EmpresaCadetes
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            services.AddSingleton(listacadetes);
-            services.AddSingleton(listapedidos);
+            services.AddSingleton(cadeteria);
+            
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

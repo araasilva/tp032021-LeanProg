@@ -12,24 +12,26 @@ namespace EmpresaCadetes.Controllers
     public class PedidosController : Controller
     {
         private readonly ILogger<PedidosController> _logger;
-        private readonly List<Cadete> listacadetes;
-        private readonly List<Pedidos> listapedidos;
+        private readonly Cadeteria micadeteria;
         static int idpedidos=0;
-        public PedidosController(ILogger<PedidosController> logger, List<Cadete> Listacadetes, List<Pedidos> Listapedidos)
+        public PedidosController(ILogger<PedidosController> logger, Cadeteria micadeteria)
         {
             _logger = logger;
-            listacadetes = Listacadetes;
-            listapedidos = Listapedidos;
+            this.micadeteria = micadeteria;
             _logger.LogDebug(1, "NLog injected into Pedidos Controller");
 
         }
-        public IActionResult AgregarPedidos(string obs,string nombrec,string direc,string telefonoc)
+        public IActionResult AgregarPedidos(string obs,string nombrec,string direc,string telefonoc,string estado)
         {
             //int cantidadcadetes=listacadetes.Count();
             Cliente newCliente = new Cliente(idpedidos,nombrec,direc,telefonoc);
-            Pedidos newPedido = new Pedidos(idpedidos,obs,newCliente,telefonoc);
+           // listaClientes.Add(newCliente);
+            micadeteria.Misclientes.Add(newCliente);
+            Pedidos newPedido = new Pedidos(idpedidos,obs,newCliente,estado);
             //_logger.LogInformation("Hello, this is the Cargar Cadetes!");
-            listapedidos.Add(newPedido);
+            // listapedidos.Add(newPedido);
+            // micadeteria.AgregarPedidos(listapedidos);
+            micadeteria.MisPedidos.Add(newPedido);
             idpedidos++;
             return View(newPedido);
         }
@@ -39,10 +41,10 @@ namespace EmpresaCadetes.Controllers
             return View();
         }
 
-        public IActionResult MostrarPedidos()
+        public IActionResult MostrarPedidos(int idPedidos,int idCadete)
         {
             //_logger.LogInformation("Hello, this is the index!");
-            return View(listapedidos);
+            return View(micadeteria);
         }
 
         public IActionResult Index()
