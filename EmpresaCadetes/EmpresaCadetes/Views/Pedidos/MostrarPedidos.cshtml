@@ -5,67 +5,86 @@
 }
 @model EmpresaCadetes.Entidades.Cadeteria
 
-<div class="text-center">
-    <h1 class="display-4">LISTAS DE PEDIDOS</h1>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <h3>Nro</h3>
-            </div>
-            <div class="col-sm">
-                <h3>Detalle</h3>
-            </div>
-            <div class="col-sm">
-                <h3>Cliente</h3>
-            </div>
-            <div class="col-sm">
-                <h3>Estado</h3>
-            </div>
-            <div class="col-sm">
-                <h3>Cadetes</h3>
-            </div>
-
-        </div>
+    <div class="text-center">
+        <br />
+        <a class="btn btn-primary" role="button" asp-area="" asp-controller="Cadeteria" asp-action="CadetesConPedidos">Mostrar Cadetes</a>
     </div>
+    <br />
+    <div class="text-center">
+        <h1 class="display-4">LISTAS DE PEDIDOS</h1>
 
-    
-            @foreach (var item in Model.MisPedidos)
-            {
-                
-                        <form asp-action="MostrarPedidos" asp-controller="Pedidos">
-                            <div class="row">
-                                <div class="col" title="id" hidden>
-                                    <input type="number" name="idPedido" value="@item.Numero" />
-                                </div>
-                                <div class="col" title="id">
-                                    @item.Numero
-                                </div>
-                                <div class="col" title="Nombre">
-                                    @item.Observacion
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <h3>Nro</h3>
+                </div>
+                <div class="col-sm">
+                    <h3>Detalle</h3>
+                </div>
+                <div class="col-sm">
+                    <h3>Cliente</h3>
+                </div>
+                <div class="col-sm">
+                    <h3>Estado</h3>
+                </div>
+                <div class="col-sm">
+                    <h3>Cadetes</h3>
+                </div>
+                <div class="col-sm">
+                    <h3>Seleccion</h3>
+                </div>
 
-                                </div>
-                                <div class="col" title="Direccion">
-                                    @item.NewCliente.Nombre
+            </div>
+        </div>
 
-                                </div>
-                                <div class="col" title="Estado">
-                                    @item.Estado
 
-                                </div>
+        @foreach (var item in Model.MisPedidos)
+        {
 
-                                <div class="col" title="Telefeno" name="idCadete">
-                                    <select class="align-items-xl-baseline">
-                                        @foreach (var item2 in Model.MisCadetes)
-                                        {
-                                            <option value="@item2.Id">  @item2.Nombre</option>
-                                        }
-                                    </select>
+            <form asp-action="PedidoAcadete" asp-controller="Pedidos">
+                <div class="row">
+                    <div hidden>
+                        <input type="number" name="idPedido" value="@item.Numero" />
+                    </div>
+                    <div class="col" title="id">
+                        @item.Numero
+                    </div>
+                    <div class="col" title="Nombre">
+                        @item.Observacion
 
-                                </div>
-                                <input class="border-right" type="submit" name="AgregarPedido" value="Seleccionar" />
-                            </div>
-                         </form>
-            }
+                    </div>
+                    <div class="col" title="Direccion">
+                        @item.NewCliente.Nombre
 
-</div>
+                    </div>
+                    <div class="col" title="Estado">
+                        @item.Estado
+
+                    </div>
+
+                    <div class="col">
+                        <select class="align-items-xl-baseline" name="idCadete">
+                            @foreach (var cadete in Model.MisCadetes)
+                            {
+                                if (cadete.Listapedidos.Exists(a => a.Numero == item.Numero))
+                                {
+                                    <option selected value="@cadete.Id">  @cadete.Nombre (@cadete.Listapedidos.Count()) </option>
+                                }
+                                else
+                                {
+                                    <option value="@cadete.Id">  @cadete.Nombre</option>
+                                }
+
+                            }
+                        </select>
+
+                    </div>
+                    <div>
+                        <input class="bg-success" type="submit" value="Seleccionar" />
+                    </div>
+
+                </div>
+            </form>
+        }
+
+    </div>

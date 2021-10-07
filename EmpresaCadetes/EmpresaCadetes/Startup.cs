@@ -19,9 +19,12 @@ namespace EmpresaCadetes
         static List<Pedidos> listapedidos = new List<Pedidos>();
         static List<Cliente> listaclientes = new List<Cliente>();*/
         Cadeteria cadeteria = new Cadeteria();
+        DBCadeteria DB = new DBCadeteria();
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -29,10 +32,11 @@ namespace EmpresaCadetes
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            cadeteria.MisCadetes = DB.ReadCadetes();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddSingleton(cadeteria);
-            
-            
+            services.AddSingleton(DB);
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,27 +12,30 @@ namespace EmpresaCadetes.Controllers
     public class PedidosController : Controller
     {
         private readonly ILogger<PedidosController> _logger;
-        private readonly Cadeteria micadeteria;
+        private readonly DBCadeteria db;
+        private readonly Cadeteria cadeteria;
         static int idpedidos=0;
-        public PedidosController(ILogger<PedidosController> logger, Cadeteria micadeteria)
+        public PedidosController(ILogger<PedidosController> logger,DBCadeteria Db,Cadeteria Cadeteria)
         {
             _logger = logger;
-            this.micadeteria = micadeteria;
+              db = Db;
+            cadeteria = Cadeteria;
             _logger.LogDebug(1, "NLog injected into Pedidos Controller");
 
         }
         public IActionResult AgregarPedidos(string obs,string nombrec,string direc,string telefonoc,string estado)
         {
-            //int cantidadcadetes=listacadetes.Count();
-            Cliente newCliente = new Cliente(idpedidos,nombrec,direc,telefonoc);
-           // listaClientes.Add(newCliente);
-            micadeteria.Misclientes.Add(newCliente);
-            Pedidos newPedido = new Pedidos(idpedidos,obs,newCliente,estado);
-            //_logger.LogInformation("Hello, this is the Cargar Cadetes!");
-            // listapedidos.Add(newPedido);
-            // micadeteria.AgregarPedidos(listapedidos);
-            micadeteria.MisPedidos.Add(newPedido);
+            Pedidos newPedido;
+            if (nombrec!=null&& obs!=null) { 
+            newPedido = new Pedidos(idpedidos,obs,estado,nombrec,direc,telefonoc);   
+            cadeteria.MisPedidos.Add(newPedido);
             idpedidos++;
+            }
+            else
+            {
+                newPedido = new Pedidos(0, "0", "0", "0", "0","0");
+            }
+
             return View(newPedido);
         }
         public IActionResult FormularioPedido()
@@ -41,12 +44,28 @@ namespace EmpresaCadetes.Controllers
             return View();
         }
 
-        public IActionResult MostrarPedidos(int idPedidos,int idCadete)
+        public IActionResult MostrarPedidos()
         {
             //_logger.LogInformation("Hello, this is the index!");
-            return View(micadeteria);
+            return View(cadeteria);
+        }
+        public IActionResult PedidoAcadete(int idPedido,int idCadete)
+        {
+           QuitarPedido(idPedido);
+            Cadete miCadete = cadeteria.MisCadetes.Where(a => a.Id == idCadete).First();
+     
+            Pedidos unPedido = cadeteria.MisPedidos.Where(p => p.Numero == idPedido).First();
+
+            miCadete.Listapedidos.Add(unPedido);
+       
+            return Redirect("MostrarPedidos");
         }
 
+        private void QuitarPedido(int idPedido)
+        {
+            Pedidos pedido = cadeteria.MisPedidos.Where(pe => pe.Numero == idPedido).First();
+            cadeteria.MisCadetes.ForEach(cad => cad.Listapedidos.Remove(pedido));
+        }
         public IActionResult Index()
         {
             _logger.LogInformation("Hello, this is the index!");

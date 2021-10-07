@@ -364,3 +364,5 @@ E:\PROGRAMADOR UNIVERSITARIO 2DO AÑO\taller2\Trabajos practicos\ProyectoTp3\tp0
 E:\PROGRAMADOR UNIVERSITARIO 2DO AÑO\taller2\Trabajos practicos\ProyectoTp3\tp032021-LeanProg\EmpresaCadetes\EmpresaCadetes\obj\Debug\net5.0\Razor\Views\Pedidos\AgregarPedidos.cshtml.g.cs
 E:\PROGRAMADOR UNIVERSITARIO 2DO AÑO\taller2\Trabajos practicos\ProyectoTp3\tp032021-LeanProg\EmpresaCadetes\EmpresaCadetes\obj\Debug\net5.0\Razor\Views\Pedidos\FormularioPedido.cshtml.g.cs
 E:\PROGRAMADOR UNIVERSITARIO 2DO AÑO\taller2\Trabajos practicos\ProyectoTp3\tp032021-LeanProg\EmpresaCadetes\EmpresaCadetes\obj\Debug\net5.0\Razor\Views\Pedidos\MostrarPedidos.cshtml.g.cs
+E:\PROGRAMADOR UNIVERSITARIO 2DO AÑO\taller2\Trabajos practicos\ProyectoTp3\tp032021-LeanProg\EmpresaCadetes\EmpresaCadetes\obj\Debug\net5.0\Razor\Views\Pedidos\PedidoAcadete.cshtml.g.cs
+E:\PROGRAMADOR UNIVERSITARIO 2DO AÑO\taller2\Trabajos practicos\ProyectoTp3\tp032021-LeanProg\EmpresaCadetes\EmpresaCadetes\obj\Debug\net5.0\Razor\Views\Cadeteria\CadetesConPedidos.cshtml.g.cs

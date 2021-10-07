@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model EmpresaCadetes.Entidades.Cadeteria
+
+<table class="table-dark" align="center">
+
+    <tr>
+        <td>ID</td>
+        <td>Nombre Cadete</td>
+        <td> Pedidos</td>
+    </tr>
+    @foreach (var cadete in Model.MisCadetes)
+    {
+        <tr>
+
+            <td>@cadete.Id</td>
+            <td>@cadete.Nombre</td>
+            <td>
+                @foreach (var pedidos in cadete.Listapedidos)
+                {
+                    <ul>
+                        <li>id=@pedidos.Numero descripcion=@pedidos.Observacion  </li>
+
+                    </ul>
+                }
+            </td>
+          
+
+        </tr>
+    }
+    </table>

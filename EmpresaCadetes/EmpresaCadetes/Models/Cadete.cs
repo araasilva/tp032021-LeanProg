@@ -36,6 +36,10 @@ namespace EmpresaCadetes.Entidades
             
 
         }
+        public void AgregarPedido(Pedidos unPedido)
+        {
+            this.Listapedidos.Add(unPedido);
+        }
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Direcion { get => direcion; set => direcion = value; }

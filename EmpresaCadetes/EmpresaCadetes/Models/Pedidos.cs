@@ -11,12 +11,13 @@ namespace EmpresaCadetes.Entidades
         private string observacion;
         private Cliente newCliente;
         private string estado;
+     
 
-        public Pedidos(int numero, string observacion, Cliente newCliente, string estado)
+        public Pedidos(int numero, string observacion, string estado,string nombre,string direcion, string telefono)
         {
             this.numero = numero;
             this.observacion = observacion;
-            this.newCliente = newCliente;
+            this.newCliente = new Cliente(numero,nombre,direcion,telefono);
             this.estado = estado;
         }
 
