@@ -41,7 +41,7 @@
         @foreach (var item in Model.MisPedidos)
         {
 
-            <form asp-action="PedidoAcadete" asp-controller="Pedidos">
+            <form asp-action="PedidoAcadete" asp-controller="Pedidos"  method="Post">
                 <div class="row">
                     <div hidden>
                         <input type="number" name="idPedido" value="@item.Numero" />
