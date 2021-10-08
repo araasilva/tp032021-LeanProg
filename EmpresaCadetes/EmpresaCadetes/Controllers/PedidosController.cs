@@ -46,7 +46,7 @@ namespace EmpresaCadetes.Controllers
 
         public IActionResult MostrarPedidos()
         {
-            //_logger.LogInformation("Hello, this is the index!");
+  
             return View(cadeteria);
         }
         public IActionResult PedidoAcadete(int idPedido,int idCadete)
@@ -60,7 +60,7 @@ namespace EmpresaCadetes.Controllers
        
             return Redirect("MostrarPedidos");
         }
-
+        //Funcion quitar pedido tal cual en el video y no se aplica a mi proyecto
         private void QuitarPedido(int idPedido)
         {
             Pedidos pedido = cadeteria.MisPedidos.Where(pe => pe.Numero == idPedido).First();
