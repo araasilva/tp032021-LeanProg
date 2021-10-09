@@ -13,7 +13,10 @@ namespace EmpresaCadetes.Entidades
     {
         private Cadeteria cadeteria;
         public Cadeteria Cadeteria { get => cadeteria; set => cadeteria = value; }
-        string path = "e:\\temp\\Cadetes.json";
+        string path = "c:\\temp\\Cadetes.json";
+        string path2 = "c:\\temp\\Pedidos.json";
+
+        
         public DBCadeteria()
         //creo el constructor de la base datos con el archivo vacio apuntando a la direcion de path
         {
@@ -29,8 +32,19 @@ namespace EmpresaCadetes.Entidades
                     }
                 }
             }
+            if (!File.Exists(path2))
+            {
+                using (FileStream miArchivo = new FileStream(path2, FileMode.Create))
+                {
+                    using (StreamWriter writer = new StreamWriter(miArchivo))
+                    {
+                        writer.Write("");
+                        writer.Close();
+                        writer.Dispose();
+                    }
+                }
+            }
             
-
         }
         //LEER CADETES
         public List<Cadete> ReadCadetes()
@@ -67,7 +81,7 @@ namespace EmpresaCadetes.Entidades
             return Cadetejson;
         }
 
-
+        
         //GuardarCadete en el archivo json;
         public void SaveCadete(Cadete cadete)
         {
@@ -116,7 +130,7 @@ namespace EmpresaCadetes.Entidades
                     }
                 }
 
-                Cadeteria.MisCadetes = nuevo;
+               
             }
             catch (Exception ex)
             {
@@ -127,6 +141,43 @@ namespace EmpresaCadetes.Entidades
 
         }
 
-       
+      public List<Pedidos> ReadPedidos()
+        {
+            List<Pedidos> Pedidojson = null;
+            try
+            {
+                using (FileStream miArchivo= new FileStream(path2,FileMode.Open))
+                {
+                    using (StreamReader reader = new StreamReader(miArchivo))
+                    {
+                        string strPedidos = reader.ReadToEnd();
+                        reader.Close();
+                        reader.Dispose();
+                        if (strPedidos != "")
+                        {
+                            Pedidojson = JsonSerializer.Deserialize<List<Pedidos>>(strPedidos);
+
+                        }
+                        else
+                        {
+                            Pedidojson = new List<Pedidos>();
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                string error = ex.ToString();
+            }
+
+            return Pedidojson;
+        } 
+
+        public void SavePedidos()
+        {
+
+        }
     }
 }

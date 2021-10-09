@@ -14,7 +14,7 @@ namespace EmpresaCadetes.Controllers
         private readonly ILogger<PedidosController> _logger;
         private readonly DBCadeteria db;
         private readonly Cadeteria cadeteria;
-        static int idpedidos=0;
+        static int idpedidos=1;
         public PedidosController(ILogger<PedidosController> logger,DBCadeteria Db,Cadeteria Cadeteria)
         {
             _logger = logger;

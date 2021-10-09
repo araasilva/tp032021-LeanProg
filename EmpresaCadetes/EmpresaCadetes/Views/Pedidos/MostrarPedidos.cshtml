@@ -7,7 +7,7 @@
 
     <div class="text-center">
         <br />
-        <a class="btn btn-primary" role="button" asp-area="" asp-controller="Cadeteria" asp-action="CadetesConPedidos">Mostrar Cadetes</a>
+        <a class="btn btn-primary" role="button" asp-area="" asp-controller="Cadeteria" asp-action="CadetesConPedidos">Mostrar Cadetes con sus pedidos</a>
     </div>
     <br />
     <div class="text-center">
@@ -15,6 +15,7 @@
 
         <div class="container">
             <div class="row">
+                <div hidden>   </div>
                 <div class="col-sm">
                     <h3>Nro</h3>
                 </div>
@@ -35,56 +36,56 @@
                 </div>
 
             </div>
+
+
+
+            @foreach (var item in Model.MisPedidos)
+            {
+
+                <form asp-action="PedidoAcadete" asp-controller="Pedidos" method="Post">
+                    <div class="row">
+                        <div hidden>         <input hidden type="number" name="idPedido" value="@item.Numero" /> </div>
+                 
+
+                        <div class="col" title="id">
+                            @item.Numero
+                        </div>
+                        <div class="col" title="Nombre">
+                            @item.Observacion
+
+                        </div>
+                        <div class="col" title="Direccion">
+                            @item.NewCliente.Nombre
+
+                        </div>
+                        <div class="col" title="Estado">
+                            @item.Estado
+
+                        </div>
+
+                        <div class="col">
+                            <select class="align-items-xl-baseline" name="idCadete">
+                                @foreach (var cadete in Model.MisCadetes)
+                                {
+                                    if (cadete.Listapedidos.Exists(a => a.Numero == item.Numero))
+                                    {
+                                        <option selected value="@cadete.Id">  @cadete.Nombre (@cadete.Listapedidos.Count()) </option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@cadete.Id">  @cadete.Nombre</option>
+                                    }
+
+                                }
+                            </select>
+
+                        </div>
+                        <div>
+                            <input class="bg-success" type="submit" value="Seleccionar" />
+                        </div>
+
+                    </div>
+                </form>
+            }
         </div>
-
-
-        @foreach (var item in Model.MisPedidos)
-        {
-
-            <form asp-action="PedidoAcadete" asp-controller="Pedidos"  method="Post">
-                <div class="row">
-                    <div hidden>
-                        <input type="number" name="idPedido" value="@item.Numero" />
-                    </div>
-                    <div class="col" title="id">
-                        @item.Numero
-                    </div>
-                    <div class="col" title="Nombre">
-                        @item.Observacion
-
-                    </div>
-                    <div class="col" title="Direccion">
-                        @item.NewCliente.Nombre
-
-                    </div>
-                    <div class="col" title="Estado">
-                        @item.Estado
-
-                    </div>
-
-                    <div class="col">
-                        <select class="align-items-xl-baseline" name="idCadete">
-                            @foreach (var cadete in Model.MisCadetes)
-                            {
-                                if (cadete.Listapedidos.Exists(a => a.Numero == item.Numero))
-                                {
-                                    <option selected value="@cadete.Id">  @cadete.Nombre (@cadete.Listapedidos.Count()) </option>
-                                }
-                                else
-                                {
-                                    <option value="@cadete.Id">  @cadete.Nombre</option>
-                                }
-
-                            }
-                        </select>
-
-                    </div>
-                    <div>
-                        <input class="bg-success" type="submit" value="Seleccionar" />
-                    </div>
-
-                </div>
-            </form>
-        }
-
     </div>

@@ -11,7 +11,7 @@ namespace EmpresaCadetes.Entidades
         private string nombre;
         private string direcion;
         private string telefono;
-        static private List<Pedidos> listapedidos;
+        private List<Pedidos> listapedidos;
 
         public Cadete(int id, string nombre, string direcion, string telefono)
         {

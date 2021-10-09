@@ -3,7 +3,7 @@
 }
 @model List<EmpresaCadetes.Entidades.Cadete>
 <div class="text-center">
-    <h1 class="display-4">LISTAS DE LA CADETERIA</h1>
+    <h1 class="display-4">LISTAS DE CADETES</h1>
 
     <div class="container">
         <div class="row">
@@ -19,6 +19,9 @@
             <div class="col-sm">
                 <h3>Telefono</h3>
             </div>
+            <div class="col-sm">
+                <h3>Eliminar</h3>
+            </div>
 
         </div>
     </div>
@@ -26,24 +29,33 @@
 
     @foreach (var item in Model)
     {
+<form asp-action="EliminarCadete" asp-controller="Cadeteria" method="post">
+            <div class="row">
+                <div hidden>
+                    <input type="number" hidden name="idCadete" value="@item.Id" />
+                </div>
+                <div class="col" title="id">
+                    @item.Id
+                </div>
+                <div class="col" title="Nombre">
+                    @item.Nombre
 
-<div class="row">
-    <div class="col" title="id">
-        @item.Id
-    </div>
-    <div class="col" title="Nombre">
-        @item.Nombre
+                </div>
+                <div class="col" title="Direccion">
+                    @item.Direcion
 
-    </div>
-    <div class="col" title="Direccion">
-        @item.Direcion
+                </div>
+                <div class="col" title="Telefeno">
+                    @item.Telefono
 
-    </div>
-    <div class="col" title="Telefeno">
-        @item.Telefono
+                </div>
+                <div class="col" title="Telefeno">
+                    <input type="submit" class="btn-danger"  value="ELIMINAR" />
 
-    </div>
-</div>
+                </div>
+            </div>
+
+</form>
     }
 
 </div>

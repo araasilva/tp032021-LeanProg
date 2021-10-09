@@ -1,6 +1,8 @@
 ﻿using EmpresaCadetes.Entidades;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.IO;
+using System.Linq;
 
 namespace EmpresaCadetes.Controllers
 {
@@ -39,6 +41,7 @@ namespace EmpresaCadetes.Controllers
 
             return View();
         }
+        
         public IActionResult CadetesConPedidos()
         {
 
@@ -51,6 +54,13 @@ namespace EmpresaCadetes.Controllers
         {
             _logger.LogInformation("Hello, this is the index!");
             return View(micadeteria.MisCadetes);
+        }
+        public IActionResult EliminarCadete(int idCadete)
+        {
+            Cadete miCadete = micadeteria.MisCadetes.Where(cad => cad.Id == idCadete).First();
+            micadeteria.MisCadetes.Remove(miCadete);
+            db.DeleteCadetes(miCadete.Id);
+            return Redirect("Index");
         }
     }
 }
