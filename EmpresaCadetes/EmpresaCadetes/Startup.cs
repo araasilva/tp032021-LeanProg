@@ -15,9 +15,7 @@ namespace EmpresaCadetes
 {
     public class Startup
     {
-       /* static List<Cadete> listacadetes = new List<Cadete>();
-        static List<Pedidos> listapedidos = new List<Pedidos>();
-        static List<Cliente> listaclientes = new List<Cliente>();*/
+       
         Cadeteria cadeteria = new Cadeteria();
         DBCadeteria DB = new DBCadeteria();
         

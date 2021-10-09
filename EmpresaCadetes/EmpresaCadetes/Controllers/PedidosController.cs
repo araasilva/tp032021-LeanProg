@@ -25,14 +25,13 @@ namespace EmpresaCadetes.Controllers
         }
         public IActionResult AgregarPedidos(string obs,string nombrec,string direc,string telefonoc,string estado)
         {
-                
+            idpedidos = cadeteria.MisPedidos.Count();   
             
             Pedidos newPedido;
             newPedido = new Pedidos(idpedidos, obs, estado, nombrec, direc, telefonoc);
             cadeteria.MisPedidos.Add(newPedido);
+            db.SavePedidos(newPedido);
             idpedidos++;
-               
-           
             return View(newPedido);
         }
         public IActionResult FormularioPedido()
