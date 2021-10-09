@@ -33,6 +33,7 @@ namespace EmpresaCadetes
         public void ConfigureServices(IServiceCollection services)
         {
             cadeteria.MisCadetes = DB.ReadCadetes();
+            cadeteria.MisPedidos = DB.ReadPedidos();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddSingleton(cadeteria);
             services.AddSingleton(DB);
