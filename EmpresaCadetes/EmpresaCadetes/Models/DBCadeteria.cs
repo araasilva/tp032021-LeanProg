@@ -175,9 +175,55 @@ namespace EmpresaCadetes.Entidades
             return Pedidojson;
         } 
 
-        public void SavePedidos()
+        public void SavePedidos(Pedidos pedido)
         {
+            try
+            {
+                List<Pedidos> pedidos = ReadPedidos();
+                pedidos.Add(pedido);
+                string PedidosJson = JsonSerializer.Serialize(pedidos);
+                using (FileStream miArchivo = new FileStream(path2, FileMode.Create))
+                {
+                    using (StreamWriter writer = new StreamWriter(miArchivo))
+                    {
+                        writer.Write(PedidosJson);
+                        writer.Close();
+                        writer.Dispose();
+                    }
+                }
+                        
+            }
+            catch (Exception ex)
+            {
 
+                string error = ex.ToString();
+            }
+        }
+
+        public void DeletePedidos(int id)
+        {
+            try
+            {
+                   //Leo la lista de pedidos
+                List<Pedidos> listaPedidos = ReadPedidos();
+                listaPedidos.RemoveAll(x => x.Numero == id);
+                string Pedidosjson = JsonSerializer.Serialize(listaPedidos);
+                using (FileStream miArchivo = new FileStream(path2,FileMode.Create))
+                {
+                    using (StreamWriter writer= new StreamWriter(miArchivo))
+                    {
+                        writer.Write(Pedidosjson);
+                        writer.Close();
+                        writer.Dispose();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                string error = ex.ToString();
+            }
         }
     }
 }
