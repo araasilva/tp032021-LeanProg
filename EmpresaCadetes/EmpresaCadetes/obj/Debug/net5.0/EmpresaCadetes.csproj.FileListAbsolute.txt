@@ -735,3 +735,4 @@ C:\Users\Ortega\Documents\leandro tp3\tp032021-LeanProg\EmpresaCadetes\EmpresaCa
 C:\Users\Ortega\Documents\leandro tp3\tp032021-LeanProg\EmpresaCadetes\EmpresaCadetes\obj\Debug\net5.0\EmpresaCadetes.csproj.CopyComplete
 C:\Users\Ortega\Documents\leandro tp3\tp032021-LeanProg\EmpresaCadetes\EmpresaCadetes\obj\Debug\net5.0\EmpresaCadetes.genruntimeconfig.cache
 C:\Users\Ortega\Documents\leandro tp3\tp032021-LeanProg\EmpresaCadetes\EmpresaCadetes\obj\Debug\net5.0\Razor\Views\Cadeteria\EliminarCadete.cshtml.g.cs
+C:\Users\Ortega\Documents\leandro tp3\tp032021-LeanProg\EmpresaCadetes\EmpresaCadetes\obj\Debug\net5.0\Razor\Views\Pedidos\EliminarPedido.cshtml.g.cs

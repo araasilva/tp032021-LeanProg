@@ -25,7 +25,6 @@ namespace EmpresaCadetes.Controllers
         }
         public IActionResult AgregarPedidos(string obs,string nombrec,string direc,string telefonoc,string estado)
         {
-            idpedidos = cadeteria.MisPedidos.Count();   
             
             Pedidos newPedido;
             newPedido = new Pedidos(idpedidos, obs, estado, nombrec, direc, telefonoc);
@@ -61,6 +60,12 @@ namespace EmpresaCadetes.Controllers
         {
             Pedidos pedido = cadeteria.MisPedidos.Where(pe => pe.Numero == idPedido).First();
             cadeteria.MisCadetes.ForEach(cad => cad.Listapedidos.Remove(pedido));
+        }
+
+        public IActionResult EliminarPedido(int id)
+        {
+
+            return Redirect("MostrarPedidos");
         }
         public IActionResult Index()
         {

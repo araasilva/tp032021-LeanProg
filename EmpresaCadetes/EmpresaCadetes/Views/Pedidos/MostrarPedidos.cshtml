@@ -45,7 +45,7 @@
                 <form asp-action="PedidoAcadete" asp-controller="Pedidos" method="Post">
                     <div class="row">
                         <div hidden>         <input hidden type="number" name="idPedido" value="@item.Numero" /> </div>
-                 
+
 
                         <div class="col" title="id">
                             @item.Numero
@@ -83,7 +83,9 @@
                         <div>
                             <input class="bg-success" type="submit" value="Seleccionar" />
                         </div>
-
+                        <div>
+                            <a class="btn-danger" asp-action="EliminarPedido" asp-controller="Pedidos" name="idPedido" value="@item.Numero">Eliminar</a>
+                        </div>
                     </div>
                 </form>
             }

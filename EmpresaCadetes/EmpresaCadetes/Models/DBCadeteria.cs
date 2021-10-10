@@ -140,23 +140,24 @@ namespace EmpresaCadetes.Entidades
           
 
         }
-
+        //Leer pedidos
       public List<Pedidos> ReadPedidos()
         {
             List<Pedidos> Pedidojson = null;
             try
             {
-                using (FileStream miArchivo= new FileStream(path2,FileMode.Open))
+                using (FileStream miArchivo2= new FileStream(path2,FileMode.Open))
                 {
-                    using (StreamReader reader = new StreamReader(miArchivo))
+                    using (StreamReader reader = new StreamReader(miArchivo2))
                     {
                         string strPedidos = reader.ReadToEnd();
                         reader.Close();
                         reader.Dispose();
-                        if (strPedidos != "")
+                        if (strPedidos !="")
                         {
+                            //Problema con serilzer cuando cargo el segundo pedido me manda todo null y me salta la excepcion
                             Pedidojson = JsonSerializer.Deserialize<List<Pedidos>>(strPedidos);
-
+                            
                         }
                         else
                         {
@@ -175,12 +176,12 @@ namespace EmpresaCadetes.Entidades
             return Pedidojson;
         } 
 
-        public void SavePedidos(Pedidos pedido)
+        public void SavePedidos(Pedidos pedido1)
         {
             try
             {
                 List<Pedidos> pedidos = ReadPedidos();
-                pedidos.Add(pedido);
+                pedidos.Add(pedido1);
                 string PedidosJson = JsonSerializer.Serialize(pedidos);
                 using (FileStream miArchivo = new FileStream(path2, FileMode.Create))
                 {
