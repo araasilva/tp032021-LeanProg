@@ -56,8 +56,46 @@ namespace EmpresaCadetes.Controllers
         //cambiar Estado de un pedido a entregado para pagar al cadete
         public IActionResult ModificarEstado(int idPedido)
         {
-            
+            if (controlarPedidosconCadetes(idPedido))
+            {
+            Pedidos pedido = cadeteria.MisPedidos.Where(p => p.Numero==idPedido).First();
+            pedido.Estado = "ENTREGADO";
+            db.ModificarEstadoPedido(cadeteria.MisPedidos);
+            foreach (var cade in cadeteria.MisCadetes)
+            {
+                foreach (var pedi in cade.Listapedidos)
+                {
+                    if (pedi.Numero==idPedido)
+                    {
+                        pedi.Estado = "ENTREGADO";
+                    }
+                }
+            }
+
+            db.ModificarListaCadeteApedido(cadeteria.MisCadetes);
             return Redirect("MostrarPedidos");
+            }
+            else
+            {
+                return Redirect("MostrarPedidos");
+            }
+        }
+
+        //controlarPEDIDO EN CADETE
+        private bool controlarPedidosconCadetes(int idpedido)
+        {
+            bool resultado = false;
+            foreach (var cade in cadeteria.MisCadetes)
+            {
+                foreach (var pedi in cade.Listapedidos)
+                {
+                    if (pedi.Numero == idpedido)
+                    {
+                        resultado = true;
+                    }
+                }
+            }
+            return resultado;
         }
         //AGREGAR PEDIDO A CADETE
         public IActionResult PedidoAcadete(int idPedido,int idCadete)

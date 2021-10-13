@@ -89,10 +89,10 @@
                         <input class="bg-success" type="submit" value="Seleccionar" />
                     </div>
                     <div class="col">
-                        <a name="idPedido" class="btn-secondary" asp-route-idPedido="@item.Numero" asp-action="EliminarPedido" asp-controller="Pedidos">Eliminar</a>
+                        <a name="idPedido" class="btn btn-danger" asp-route-idPedido="@item.Numero" asp-action="EliminarPedido" asp-controller="Pedidos">Eliminar</a>
                     </div>
                     <div class="col">
-                        <a name="idPedido" class="btn-secondary" asp-route-idPedido="@item.Numero" asp-action="ModificarEstado" asp-controller="Pedidos">Entregado</a>
+                        <a name="idPedido" class="btn btn-dark" asp-route-idPedido="@item.Numero" asp-action="ModificarEstado" asp-controller="Pedidos">Entregado</a>
                     </div>
                 </div>
             </form>
