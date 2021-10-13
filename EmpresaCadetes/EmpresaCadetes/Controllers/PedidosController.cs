@@ -25,7 +25,7 @@ namespace EmpresaCadetes.Controllers
         }
         public IActionResult AgregarPedidos(string obs,string nombrec,string direc,string telefonoc,string estado)
         {
-            idpedidos = cadeteria.MisPedidos.Count() + 1;
+            idpedidos = cadeteria.MisPedidos.First().Numero + 1;
             Pedidos newPedido;
             newPedido = new Pedidos(idpedidos, obs, estado, nombrec, direc, telefonoc);
             cadeteria.MisPedidos.Add(newPedido);
@@ -35,27 +35,30 @@ namespace EmpresaCadetes.Controllers
         }
         public IActionResult FormularioPedido()
         {
-            //_logger.LogInformation("Hello, this is the Cargar Cadetes!");
+            //Vista para cargar pedidos
             return View();
         }
 
         public IActionResult MostrarPedidos()
         {
-  
+               //VISTA PARA MOSTRAR PEDIDOS
             return View(cadeteria);
         }
+        //AGREGAR PEDIDO A CADETE
         public IActionResult PedidoAcadete(int idPedido,int idCadete)
         {
            QuitarPedido(idPedido);
             Cadete miCadete = cadeteria.MisCadetes.Where(a => a.Id == idCadete).First();
      
             Pedidos unPedido = cadeteria.MisPedidos.Where(p => p.Numero == idPedido).First();
-
+            unPedido.Estado = "ENVIADO";
+            db.ModificarEstadoPedido(cadeteria.MisPedidos);
+            db.ModificarListaCadeteApedido(cadeteria.MisCadetes);
             miCadete.Listapedidos.Add(unPedido);
        
             return Redirect("MostrarPedidos");
         }
-        //Funcion quitar pedido tal cual en el video y no se aplica a mi proyecto
+        //Funcion quitar pedido
         private void QuitarPedido(int idPedido)
         {
             Pedidos pedido = cadeteria.MisPedidos.Where(pe => pe.Numero == idPedido).First();
@@ -64,10 +67,10 @@ namespace EmpresaCadetes.Controllers
 
         public IActionResult EliminarPedido(int idPedido)
         {
-            
-            cadeteria.MisPedidos.RemoveAll(p =>p.Numero==idPedido);
-            db.DeletePedidos(idPedido);
-           
+            QuitarPedido(idPedido);
+            cadeteria.MisPedidos.RemoveAll(p =>p.Numero==idPedido); //borro pedido de mi lista actual
+            db.DeletePedidos(idPedido); //borro el pedido de mi base de datos
+            db.ModificarListaCadeteApedido(cadeteria.MisCadetes); // y modifico mi lista cadetes
             return Redirect("MostrarPedidos");
         }
         public IActionResult Index()

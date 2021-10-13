@@ -1087,19 +1087,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ortega\\.nuget\\packages\\": {}
+    "C:\\Users\\Leanpix\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ortega\\Documents\\leandro tp3\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj",
+      "projectUniqueName": "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\ProyectoTP3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj",
       "projectName": "EmpresaCadetes",
-      "projectPath": "C:\\Users\\Ortega\\Documents\\leandro tp3\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj",
-      "packagesPath": "C:\\Users\\Ortega\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ortega\\Documents\\leandro tp3\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\obj\\",
+      "projectPath": "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\ProyectoTP3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj",
+      "packagesPath": "C:\\Users\\Leanpix\\.nuget\\packages\\",
+      "outputPath": "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\ProyectoTP3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Ortega\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Leanpix\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1156,7 +1156,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

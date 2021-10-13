@@ -32,7 +32,10 @@
                 <h3>Cadetes</h3>
             </div>
             <div class="col-sm">
-                <h3>Seleccion</h3>
+                <h3>Asignar Cadete</h3>
+            </div>
+            <div class="col-sm">
+                <h3>Eliminar Pedido</h3>
             </div>
 
 
@@ -45,9 +48,7 @@
 
             <form asp-action="PedidoAcadete" asp-controller="Pedidos" method="Post">
                 <div class="row">
-                    <div hidden>         <input hidden type="number" name="idPedido" value="@item.Numero" /> </div>
-
-
+                    <div hidden> <input hidden type="number" name="idPedido" value="@item.Numero" /> </div>
                     <div class="col-sm" >
                         <p> @item.Numero </p>
                         </div>
@@ -81,8 +82,11 @@
                         </select>
 
                     </div>
-                    <div>
+                    <div class="col">
                         <input class="bg-success" type="submit" value="Seleccionar" />
+                    </div>
+                    <div class="col">
+                        <a name="idPedido"  class="btn-secondary" asp-route-idPedido="@item.Numero" asp-action="Eliminar Pedido" asp-controller="Pedidos">Eliminar</a>
                     </div>
                 </div>
             </form>
@@ -91,7 +95,7 @@
     </div>
 
 
-    <h1 class="display-4">Eliminar Pedidos</h1>
+    @*<h1 class="display-4">Eliminar Pedidos</h1>
     <div class="container">
         <div class="row">
             <div hidden>   </div>
@@ -146,7 +150,7 @@
             </form>
         }
 
-    </div>
+    </div>*@
 
 
 

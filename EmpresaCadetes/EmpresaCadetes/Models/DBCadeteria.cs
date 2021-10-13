@@ -13,8 +13,8 @@ namespace EmpresaCadetes.Entidades
     {
         private Cadeteria cadeteria;
         public Cadeteria Cadeteria { get => cadeteria; set => cadeteria = value; }
-        string path = "c:\\temp\\Cadetes.json";
-        string path2 = "c:\\temp\\Pedidos.json";
+        string path = "e:\\temp\\Cadetes.json";
+        string path2 = "e:\\temp\\Pedidos.json";
 
         
         public DBCadeteria()
@@ -102,6 +102,28 @@ namespace EmpresaCadetes.Entidades
                 }
 
 
+            }
+            catch (Exception ex)
+            {
+
+                string error = ex.ToString();
+            }
+        }
+        //FUNCION PARA MODIFICAR LA LISTA DE PEDIDOS DE LOS CADETES EN LA DB
+        public void ModificarListaCadeteApedido(List<Cadete> listaCadetes)
+        {
+            try
+            {
+                string cadeteJson = JsonSerializer.Serialize(listaCadetes);
+                using (FileStream miArchivo= new FileStream(path,FileMode.Create))
+                {
+                    using (StreamWriter writter= new StreamWriter(miArchivo))
+                    {
+                        writter.Write(cadeteJson);
+                        writter.Close();
+                        writter.Dispose();
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -200,7 +222,28 @@ namespace EmpresaCadetes.Entidades
                 string error = ex.ToString();
             }
         }
+        //FUNCION MODIFICAR PEDIDO EN DB
+        public void ModificarEstadoPedido(List<Pedidos> miListap)
+        {
+            try
+            {
+                string pejson = JsonSerializer.Serialize(miListap);
+                using (FileStream miarchivo = new FileStream(path2,FileMode.Create))
+                {
+                    using (StreamWriter writter= new StreamWriter(miarchivo))
+                    {
+                        writter.Write(pejson);
+                        writter.Close();
+                        writter.Dispose();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
 
+                string error = ex.ToString();
+            }
+        }
         public void DeletePedidos(int id)
         {
             try
