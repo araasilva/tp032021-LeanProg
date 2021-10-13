@@ -15,8 +15,9 @@ namespace EmpresaCadetes.Entidades
         public Cadeteria Cadeteria { get => cadeteria; set => cadeteria = value; }
         string path = "e:\\temp\\Cadetes.json";
         string path2 = "e:\\temp\\Pedidos.json";
+        string path3 = "e:\\temp\\PagosRealizados.json";
 
-        
+
         public DBCadeteria()
         //creo el constructor de la base datos con el archivo vacio apuntando a la direcion de path
         {
@@ -41,6 +42,19 @@ namespace EmpresaCadetes.Entidades
                         writer.Write("");
                         writer.Close();
                         writer.Dispose();
+                    }
+                }
+            }
+            if (!File.Exists(path3))
+            {
+                using (FileStream miarchivo =new FileStream(path3,FileMode.Create))
+                {
+                    using (StreamWriter writter= new StreamWriter(miarchivo))
+                    {
+                        writter.Write("");
+                        writter.Close();
+                        writter.Dispose();
+
                     }
                 }
             }
