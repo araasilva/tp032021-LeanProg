@@ -14,7 +14,7 @@ namespace EmpresaCadetes.Controllers
         private readonly ILogger<PedidosController> _logger;
         private readonly DBCadeteria db;
         private readonly Cadeteria cadeteria;
-        static int idpedidos=1;
+        int idpedidos=0;
         public PedidosController(ILogger<PedidosController> logger,DBCadeteria Db,Cadeteria Cadeteria)
         {
             _logger = logger;
@@ -25,7 +25,7 @@ namespace EmpresaCadetes.Controllers
         }
         public IActionResult AgregarPedidos(string obs,string nombrec,string direc,string telefonoc,string estado)
         {
-            
+            idpedidos = cadeteria.MisPedidos.Count() + 1;
             Pedidos newPedido;
             newPedido = new Pedidos(idpedidos, obs, estado, nombrec, direc, telefonoc);
             cadeteria.MisPedidos.Add(newPedido);
@@ -62,9 +62,12 @@ namespace EmpresaCadetes.Controllers
             cadeteria.MisCadetes.ForEach(cad => cad.Listapedidos.Remove(pedido));
         }
 
-        public IActionResult EliminarPedido(int id)
+        public IActionResult EliminarPedido(int idPedido)
         {
-
+            
+            cadeteria.MisPedidos.RemoveAll(p =>p.Numero==idPedido);
+            db.DeletePedidos(idPedido);
+           
             return Redirect("MostrarPedidos");
         }
         public IActionResult Index()

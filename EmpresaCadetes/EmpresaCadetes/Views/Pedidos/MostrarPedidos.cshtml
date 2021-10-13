@@ -5,89 +5,153 @@
 }
 @model EmpresaCadetes.Entidades.Cadeteria
 
-    <div class="text-center">
-        <br />
-        <a class="btn btn-primary" role="button" asp-area="" asp-controller="Cadeteria" asp-action="CadetesConPedidos">Mostrar Cadetes con sus pedidos</a>
-    </div>
+<div class="text-center">
     <br />
-    <div class="text-center">
-        <h1 class="display-4">LISTAS DE PEDIDOS</h1>
+    <a class="btn btn-primary" role="button" asp-area="" asp-controller="Cadeteria" asp-action="CadetesConPedidos">Mostrar Cadetes con sus pedidos</a>
+</div>
+<br />
+<div class="text-center">
+    <h1 class="display-4">ASIGNAR PEDIDOS A CADETES</h1>
 
-        <div class="container">
-            <div class="row">
-                <div hidden>   </div>
-                <div class="col-sm">
-                    <h3>Nro</h3>
-                </div>
-                <div class="col-sm">
-                    <h3>Detalle</h3>
-                </div>
-                <div class="col-sm">
-                    <h3>Cliente</h3>
-                </div>
-                <div class="col-sm">
-                    <h3>Estado</h3>
-                </div>
-                <div class="col-sm">
-                    <h3>Cadetes</h3>
-                </div>
-                <div class="col-sm">
-                    <h3>Seleccion</h3>
-                </div>
-
+    <div class="container">
+        <div class="row">
+            <div hidden>   </div>
+            <div class="col-sm">
+                <h3>Nro</h3>
+            </div>
+            <div class="col-sm">
+                <h3>Detalle</h3>
+            </div>
+            <div class="col-sm">
+                <h3>Cliente</h3>
+            </div>
+            <div class="col-sm">
+                <h3>Estado</h3>
+            </div>
+            <div class="col-sm">
+                <h3>Cadetes</h3>
+            </div>
+            <div class="col-sm">
+                <h3>Seleccion</h3>
             </div>
 
 
-
-            @foreach (var item in Model.MisPedidos)
-            {
-
-                <form asp-action="PedidoAcadete" asp-controller="Pedidos" method="Post">
-                    <div class="row">
-                        <div hidden>         <input hidden type="number" name="idPedido" value="@item.Numero" /> </div>
-
-
-                        <div class="col" title="id">
-                            @item.Numero
-                        </div>
-                        <div class="col" title="Nombre">
-                            @item.Observacion
-
-                        </div>
-                        <div class="col" title="Direccion">
-                            @item.NewCliente.Nombre
-
-                        </div>
-                        <div class="col" title="Estado">
-                            @item.Estado
-
-                        </div>
-
-                        <div class="col">
-                            <select class="align-items-xl-baseline" name="idCadete">
-                                @foreach (var cadete in Model.MisCadetes)
-                                {
-                                    if (cadete.Listapedidos.Exists(a => a.Numero == item.Numero))
-                                    {
-                                        <option selected value="@cadete.Id">  @cadete.Nombre (@cadete.Listapedidos.Count()) </option>
-                                    }
-                                    else
-                                    {
-                                        <option value="@cadete.Id">  @cadete.Nombre</option>
-                                    }
-
-                                }
-                            </select>
-
-                        </div>
-                        <div>
-                            <input class="bg-success" type="submit" value="Seleccionar" />
-                        </div>
-                        <div>
-                            <a class="btn-danger" asp-action="EliminarPedido" asp-controller="Pedidos" name="idPedido" value="@item.Numero">Eliminar</a>
-                        </div>
-                    </div>
-                </form>
-            }
         </div>
+
+
+
+        @foreach (var item in Model.MisPedidos)
+        {
+
+            <form asp-action="PedidoAcadete" asp-controller="Pedidos" method="Post">
+                <div class="row">
+                    <div hidden>         <input hidden type="number" name="idPedido" value="@item.Numero" /> </div>
+
+
+                    <div class="col-sm" >
+                        <p> @item.Numero </p>
+                        </div>
+                    <div class="col-sm">
+                        <p>@item.Observacion</p> 
+
+                    </div>
+                    <div class="col-sm">
+                        <p>@item.NewCliente.Nombre </p>
+
+                    </div>
+                    <div class="col-sm" >
+                        <p> @item.Estado</p>
+
+                    </div>
+
+                    <div class="col-sm">
+                        <select class="align-items-xl-baseline" name="idCadete">
+                            @foreach (var cadete in Model.MisCadetes)
+                            {
+                                if (cadete.Listapedidos.Exists(a => a.Numero == item.Numero))
+                                {
+                                    <option selected value="@cadete.Id">  @cadete.Nombre (@cadete.Listapedidos.Count()) </option>
+                                }
+                                else
+                                {
+                                    <option value="@cadete.Id">  @cadete.Nombre</option>
+                                }
+
+                            }
+                        </select>
+
+                    </div>
+                    <div>
+                        <input class="bg-success" type="submit" value="Seleccionar" />
+                    </div>
+                </div>
+            </form>
+        }
+
     </div>
+
+
+    <h1 class="display-4">Eliminar Pedidos</h1>
+    <div class="container">
+        <div class="row">
+            <div hidden>   </div>
+            <div class="col-sm">
+                <h3>Nro</h3>
+            </div>
+            <div class="col-sm">
+                <h3>Detalle</h3>
+            </div>
+            <div class="col-sm">
+                <h3>Cliente</h3>
+            </div>
+            <div class="col-sm">
+                <h3>Estado</h3>
+            </div>
+            <div class="col-sm">
+                <h3>Seleccion</h3>
+            </div>
+
+
+        </div>
+
+
+
+        @foreach (var pedido in Model.MisPedidos)
+        {
+
+            <form asp-action="EliminarPedido" asp-controller="Pedidos" method="Post">
+                <div class="row">
+                    <div hidden> <input hidden type="number" name="idPedido" value="@pedido.Numero" /> 
+                    </div>
+
+                    <div class="col-sm" >
+                        <p>@pedido.Numero</p> 
+                    </div>
+                    <div class="col-sm" >
+                        <p>@pedido.Observacion</p>
+
+                    </div>
+                    <div class="col-sm" >
+                        <p> @pedido.NewCliente.Nombre </p>
+
+                    </div>
+                    <div class="col-sm" >
+                        <p> @pedido.Estado </p> 
+
+                    </div>
+                    <div class="col-sm">
+                        <input class="btn-danger" type="submit" value="Eliminar" />
+                    </div>
+                </div>
+            </form>
+        }
+
+    </div>
+
+
+
+
+
+
+</div>
+
