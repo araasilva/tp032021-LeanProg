@@ -11,43 +11,66 @@
                 <th scope="col">id</th>
                 <th scope="col">Nombre Cadete</th>
                 <th scope="col">Telefono</th>
-                <th scope="col">Pedidos</th>
+                <th scope="col">Pedidos en Proceso de entrega</th>
+                <th scope="col">Pedidos Entregados</th>
                 <th scope="col">Pagar Cadete</th>
             </tr>
         </thead>
         <tbody>
 
 
-            @foreach (var cadete in Model.MisCadetes )
+            @foreach (var cadete in Model.MisCadetes)
             {
 
-            
+               
             <tr>
                 <th scope="row">@cadete.Id</th>
                 <td>@cadete.Nombre</td>
                 <td>@cadete.Telefono</td>
                 <td>
 
-                    @if (cadete.Listapedidos.Count() == 0)
+                    @foreach (var pedido in cadete.Listapedidos)
                     {
-                       <p>No tiene pedidos asignados</p>
+
+                        if (pedido.Estado == "ENVIADO")
+                        {
+                            <select>
+                                <option>N°=@pedido.Numero//Cliente:@pedido.NewCliente</option>
+                            </select>
+                        }
+                        else
+                        {
+                            <p>No tiene pedidos en Proceso de entrega</p>
+                        }
+
                     }
-                    else
+
+                </td>
+                <td>
+                   
+                    @foreach (var pedido in cadete.Listapedidos)
                     {
-                        <select name="idPedido">
-                            @foreach (var pedido in cadete.Listapedidos)
-                            {
 
-                                <option value="@pedido.Numero">@pedido.Numero Del Cliente:@pedido.NewCliente.Nombre Estado (@pedido.Estado)</option>
+                        if (pedido.Estado == "ENTREGADO")
+                        {
+                            <select>
+                                <option >N°=@pedido.Numero//Cliente:@pedido.NewCliente</option>
+                            </select>
+                        }
+                        else
+                        {
+                            <p>No tiene pedidos Entregados</p>
+                        }
 
-                            }
-                        </select>
-                            }
-                        </td>
-                        <td>
-                            <input class="btn-lg" type="submit" name="pagar" value="PAGAR" />
-                        </td>
-            </tr>
+                    }
+
+
+                </td>
+                    <td>
+                        <a name="idCadete" asp-route-idCadete="@cadete.Id" asp-action="PagarCadete" asp-controller="Cadeteria" class="btn btn-secondary">PAGAR</a>
+                    </td>
+                </tr>
+                
             }
         </tbody>
     </table>

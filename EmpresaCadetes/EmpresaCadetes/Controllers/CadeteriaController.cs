@@ -48,7 +48,12 @@ namespace EmpresaCadetes.Controllers
             return View(micadeteria);
         }
 
-
+        public IActionResult PagarCadete(int idCadete)
+        {
+            Cadete micadete = micadeteria.MisCadetes.Where(cade => cade.Id == idCadete).First();
+            
+            return Redirect("CadetesConPedidos");
+        }
 
         public IActionResult Index()
         {

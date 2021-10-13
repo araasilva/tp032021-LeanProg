@@ -12,6 +12,7 @@ namespace EmpresaCadetes.Entidades
         private string direcion;
         private string telefono;
         private List<Pedidos> listapedidos;
+        private float Pagodeldia;
 
         public Cadete(int id, string nombre, string direcion, string telefono)
         {
@@ -20,6 +21,7 @@ namespace EmpresaCadetes.Entidades
             this.direcion = direcion;
             this.telefono = telefono;
             listapedidos = new List<Pedidos>();
+            Pagodeldia = 0;
         }
 
         public void AgregarListadepeditos(Pedidos pedidosparaelCadete)
@@ -45,5 +47,6 @@ namespace EmpresaCadetes.Entidades
         public string Direcion { get => direcion; set => direcion = value; }
         public string Telefono { get => telefono; set => telefono = value; }
         public List<Pedidos> Listapedidos { get => listapedidos; set => listapedidos = value; }
+        public float Pagodeldia1 { get => Pagodeldia; set => Pagodeldia = value; }
     }
 }
