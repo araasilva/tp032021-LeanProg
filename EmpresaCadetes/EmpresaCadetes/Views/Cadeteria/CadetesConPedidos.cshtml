@@ -34,15 +34,12 @@
 
                         if (pedido.Estado == "ENVIADO")
                         {
-                            <select>
-                                <option>N°=@pedido.Numero//Cliente:@pedido.NewCliente</option>
-                            </select>
+                            
+                        <p>N°=@pedido.Numero//Cliente:@pedido.NewCliente.Nombre</p><br />  
+                           
                         }
-                        else
-                        {
-                            <p>No tiene pedidos en Proceso de entrega</p>
-                        }
-
+                        
+                        
                     }
 
                 </td>
@@ -53,15 +50,11 @@
 
                         if (pedido.Estado == "ENTREGADO")
                         {
-                            <select>
-                                <option >N°=@pedido.Numero//Cliente:@pedido.NewCliente</option>
-                            </select>
+                            
+                          <p>N°=@pedido.Numero//Cliente:@pedido.NewCliente </p>  
+                            
                         }
-                        else
-                        {
-                            <p>No tiene pedidos Entregados</p>
-                        }
-
+                       
                     }
 
 

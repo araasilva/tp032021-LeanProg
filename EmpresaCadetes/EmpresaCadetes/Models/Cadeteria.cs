@@ -12,7 +12,7 @@ namespace EmpresaCadetes.Entidades
         private List<Cadete> misCadetes;
         private List<Pedidos> misPedidos;
         private List<Cliente> misclientes;
-       
+        
 
         
         public Cadeteria()

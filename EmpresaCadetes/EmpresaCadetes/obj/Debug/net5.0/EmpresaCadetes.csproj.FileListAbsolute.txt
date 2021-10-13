@@ -1107,3 +1107,4 @@ E:\PROGRAMADOR UNIVERSITARIO 2DO AÑO\taller2\Trabajos practicos\ProyectoTP3Orte
 E:\PROGRAMADOR UNIVERSITARIO 2DO AÑO\taller2\Trabajos practicos\ProyectoTP3Ortega\tp032021-LeanProg\EmpresaCadetes\EmpresaCadetes\obj\Debug\net5.0\EmpresaCadetes.pdb
 E:\PROGRAMADOR UNIVERSITARIO 2DO AÑO\taller2\Trabajos practicos\ProyectoTP3Ortega\tp032021-LeanProg\EmpresaCadetes\EmpresaCadetes\obj\Debug\net5.0\EmpresaCadetes.genruntimeconfig.cache
 E:\PROGRAMADOR UNIVERSITARIO 2DO AÑO\taller2\Trabajos practicos\ProyectoTP3Ortega\tp032021-LeanProg\EmpresaCadetes\EmpresaCadetes\obj\Debug\net5.0\Razor\Views\Pedidos\ModificarEstado.cshtml.g.cs
+E:\PROGRAMADOR UNIVERSITARIO 2DO AÑO\taller2\Trabajos practicos\ProyectoTP3Ortega\tp032021-LeanProg\EmpresaCadetes\EmpresaCadetes\obj\Debug\net5.0\Razor\Views\Cadeteria\PagarCadete.cshtml.g.cs

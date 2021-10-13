@@ -1,8 +1,10 @@
 ﻿using EmpresaCadetes.Entidades;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.IO;
 using System.Linq;
+
 
 namespace EmpresaCadetes.Controllers
 {
@@ -50,7 +52,16 @@ namespace EmpresaCadetes.Controllers
 
         public IActionResult PagarCadete(int idCadete)
         {
+            string fechaActual=DateTime.Now.ToString();
+            float suma = 0;
             Cadete micadete = micadeteria.MisCadetes.Where(cade => cade.Id == idCadete).First();
+            foreach (var pedido in micadete.Listapedidos)
+            {
+                if (pedido.Estado=="ENTREGADO")
+                {
+                    suma = 100 + suma;
+                }
+            }
             
             return Redirect("CadetesConPedidos");
         }
