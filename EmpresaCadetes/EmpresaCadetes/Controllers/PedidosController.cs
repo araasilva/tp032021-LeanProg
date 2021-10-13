@@ -25,7 +25,15 @@ namespace EmpresaCadetes.Controllers
         }
         public IActionResult AgregarPedidos(string obs,string nombrec,string direc,string telefonoc,string estado)
         {
-            idpedidos = cadeteria.MisPedidos.First().Numero + 1;
+            if (cadeteria.MisPedidos.Count==0)
+            {
+                idpedidos = 0;
+            }
+            else
+            {
+                idpedidos = cadeteria.MisPedidos.Last().Numero + 1;
+            }
+          
             Pedidos newPedido;
             newPedido = new Pedidos(idpedidos, obs, estado, nombrec, direc, telefonoc);
             cadeteria.MisPedidos.Add(newPedido);
@@ -43,6 +51,13 @@ namespace EmpresaCadetes.Controllers
         {
                //VISTA PARA MOSTRAR PEDIDOS
             return View(cadeteria);
+        }
+
+        //cambiar Estado de un pedido a entregado para pagar al cadete
+        public IActionResult ModificarEstado(int idPedido)
+        {
+            
+            return Redirect("MostrarPedidos");
         }
         //AGREGAR PEDIDO A CADETE
         public IActionResult PedidoAcadete(int idPedido,int idCadete)

@@ -37,6 +37,9 @@
             <div class="col-sm">
                 <h3>Eliminar Pedido</h3>
             </div>
+            <div class="col-sm">
+                <h3>Cambiar Estado</h3>
+            </div>
 
 
         </div>
@@ -49,18 +52,18 @@
             <form asp-action="PedidoAcadete" asp-controller="Pedidos" method="Post">
                 <div class="row">
                     <div hidden> <input hidden type="number" name="idPedido" value="@item.Numero" /> </div>
-                    <div class="col-sm" >
-                        <p> @item.Numero </p>
-                        </div>
                     <div class="col-sm">
-                        <p>@item.Observacion</p> 
+                        <p> @item.Numero </p>
+                    </div>
+                    <div class="col-sm">
+                        <p>@item.Observacion</p>
 
                     </div>
                     <div class="col-sm">
                         <p>@item.NewCliente.Nombre </p>
 
                     </div>
-                    <div class="col-sm" >
+                    <div class="col-sm">
                         <p> @item.Estado</p>
 
                     </div>
@@ -86,7 +89,10 @@
                         <input class="bg-success" type="submit" value="Seleccionar" />
                     </div>
                     <div class="col">
-                        <a name="idPedido"  class="btn-secondary" asp-route-idPedido="@item.Numero" asp-action="Eliminar Pedido" asp-controller="Pedidos">Eliminar</a>
+                        <a name="idPedido" class="btn-secondary" asp-route-idPedido="@item.Numero" asp-action="EliminarPedido" asp-controller="Pedidos">Eliminar</a>
+                    </div>
+                    <div class="col">
+                        <a name="idPedido" class="btn-secondary" asp-route-idPedido="@item.Numero" asp-action="ModificarEstado" asp-controller="Pedidos">Entregado</a>
                     </div>
                 </div>
             </form>
