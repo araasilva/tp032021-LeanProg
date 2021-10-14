@@ -20,7 +20,10 @@ namespace EmpresaCadetes.Entidades
             this.newCliente = new Cliente(numero,nombre,direcion,telefono);
             this.estado = estado;
         }
+        public Pedidos()
+        {
 
+        }
         public int Numero { get => numero; set => numero = value; }
         public string Observacion { get => observacion; set => observacion = value; }
         public Cliente NewCliente { get => newCliente; set => newCliente = value; }

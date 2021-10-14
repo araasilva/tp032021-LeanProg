@@ -7,4 +7,8 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = EmpresaCadetes
+<<<<<<< HEAD
 build_property.ProjectDir = E:\PROGRAMADOR UNIVERSITARIO 2DO AÑO\taller2\Trabajos practicos\Proyecto3Ortega\tp032021-LeanProg\EmpresaCadetes\EmpresaCadetes\
+=======
+build_property.ProjectDir = E:\PROGRAMADOR UNIVERSITARIO 2DO AÑO\taller2\Trabajos practicos\ProyectoTP3Ortega\tp032021-LeanProg\EmpresaCadetes\EmpresaCadetes\
+>>>>>>> 380ece64fc9ed756f29f4766374ca0307fc7e457

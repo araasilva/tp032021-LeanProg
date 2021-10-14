@@ -4,31 +4,66 @@
 @{
 }
 @model EmpresaCadetes.Entidades.Cadeteria
+    
+    <table class="table table-sm table-dark">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nombre Cadete</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Pedidos en Proceso de entrega</th>
+                <th scope="col">Pedidos Entregados</th>
+                <th scope="col">Pagar Cadete</th>
+            </tr>
+        </thead>
+        <tbody>
 
-<table class="table-dark" align="center">
 
-    <tr>
-        <td>ID</td>
-        <td>Nombre Cadete</td>
-        <td> Pedidos</td>
-    </tr>
-    @foreach (var cadete in Model.MisCadetes)
-    {
-        <tr>
+            @foreach (var cadete in Model.MisCadetes)
+            {
 
-            <td>@cadete.Id</td>
-            <td>@cadete.Nombre</td>
-            <td>
-                @foreach (var pedidos in cadete.Listapedidos)
-                {
-                    <ul>
-                        <li>id=@pedidos.Numero descripcion=@pedidos.Observacion  </li>
+               
+            <tr>
+                <th scope="row">@cadete.Id</th>
+                <td>@cadete.Nombre</td>
+                <td>@cadete.Telefono</td>
+                <td>
 
-                    </ul>
-                }
-            </td>
-          
+                    @foreach (var pedido in cadete.Listapedidos)
+                    {
 
-        </tr>
-    }
+                        if (pedido.Estado == "ENVIADO")
+                        {
+                            
+                        <p>N°=@pedido.Numero//Cliente:@pedido.NewCliente.Nombre</p><br />  
+                           
+                        }
+                        
+                        
+                    }
+
+                </td>
+                <td>
+                   
+                    @foreach (var pedido in cadete.Listapedidos)
+                    {
+
+                        if (pedido.Estado == "ENTREGADO")
+                        {
+                            
+                          <p>N°=@pedido.Numero//Cliente:@pedido.NewCliente </p>  
+                            
+                        }
+                       
+                    }
+
+
+                </td>
+                    <td>
+                        <a name="idCadete" asp-route-idCadete="@cadete.Id" asp-action="PagarCadete" asp-controller="Cadeteria" class="btn btn-secondary">PAGAR</a>
+                    </td>
+                </tr>
+                
+            }
+        </tbody>
     </table>

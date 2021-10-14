@@ -1092,11 +1092,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\Proyecto3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj",
       "projectName": "EmpresaCadetes",
       "projectPath": "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\Proyecto3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj",
       "packagesPath": "C:\\Users\\Leanpix\\.nuget\\packages\\",
       "outputPath": "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\Proyecto3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\obj\\",
+=======
+      "projectUniqueName": "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\ProyectoTP3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj",
+      "projectName": "EmpresaCadetes",
+      "projectPath": "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\ProyectoTP3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj",
+      "packagesPath": "C:\\Users\\Leanpix\\.nuget\\packages\\",
+      "outputPath": "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\ProyectoTP3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\obj\\",
+>>>>>>> 380ece64fc9ed756f29f4766374ca0307fc7e457
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Leanpix\\AppData\\Roaming\\NuGet\\NuGet.Config",
