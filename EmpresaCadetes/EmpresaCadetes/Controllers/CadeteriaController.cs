@@ -72,13 +72,18 @@ namespace EmpresaCadetes.Controllers
                     if (pedido.Estado == "ENTREGADO")
                     {
                         suma = 100 + suma;
-
+                        micadeteria.MisPedidos.RemoveAll(x=>x.Numero==pedido.Numero); 
                     }
                 }
                 Pago nuevoPago = new Pago(fechaActual, micadete.Nombre, suma,idpago);
                 db.SavePago(nuevoPago);
                 micadeteria.MisPagos.Add(nuevoPago);
                 //borroPedidodelcadete
+                micadete.Listapedidos.RemoveAll(x=>x.Estado=="ENTREGADO");
+                //actualizo bd
+                db.ModificarListaCadeteApedido(micadeteria.MisCadetes);
+                //actualizo bd
+                db.ModificarEstadoPedido(micadeteria.MisPedidos);
                 idpago++;
             }
         
