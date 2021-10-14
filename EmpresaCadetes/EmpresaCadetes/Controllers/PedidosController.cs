@@ -25,15 +25,16 @@ namespace EmpresaCadetes.Controllers
         }
         public IActionResult AgregarPedidos(string obs,string nombrec,string direc,string telefonoc,string estado)
         {
+            
             if (cadeteria.MisPedidos.Count==0)
             {
-                idpedidos = 0;
+                idpedidos = 1;
             }
             else
             {
                 idpedidos = cadeteria.MisPedidos.Last().Numero + 1;
             }
-          
+
             Pedidos newPedido;
             newPedido = new Pedidos(idpedidos, obs, estado, nombrec, direc, telefonoc);
             cadeteria.MisPedidos.Add(newPedido);

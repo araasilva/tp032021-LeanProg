@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\ProyectoTP3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj": {}
+    "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\Proyecto3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj": {}
   },
   "projects": {
-    "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\ProyectoTP3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj": {
+    "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\Proyecto3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\ProyectoTP3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj",
+        "projectUniqueName": "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\Proyecto3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj",
         "projectName": "EmpresaCadetes",
-        "projectPath": "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\ProyectoTP3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj",
+        "projectPath": "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\Proyecto3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\EmpresaCadetes.csproj",
         "packagesPath": "C:\\Users\\Leanpix\\.nuget\\packages\\",
-        "outputPath": "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\ProyectoTP3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\obj\\",
+        "outputPath": "E:\\PROGRAMADOR UNIVERSITARIO 2DO AÑO\\taller2\\Trabajos practicos\\Proyecto3Ortega\\tp032021-LeanProg\\EmpresaCadetes\\EmpresaCadetes\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Leanpix\\AppData\\Roaming\\NuGet\\NuGet.Config",
