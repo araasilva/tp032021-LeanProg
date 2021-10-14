@@ -15,11 +15,8 @@ namespace EmpresaCadetes.Entidades
         public Cadeteria Cadeteria { get => cadeteria; set => cadeteria = value; }
         string path = "e:\\temp\\Cadetes.json";
         string path2 = "e:\\temp\\Pedidos.json";
-<<<<<<< HEAD
-=======
         string path3 = "e:\\temp\\PagosRealizados.json";
 
->>>>>>> 380ece64fc9ed756f29f4766374ca0307fc7e457
 
         public DBCadeteria()
         //creo el constructor de la base datos con el archivo vacio apuntando a la direcion de path
