@@ -85,15 +85,11 @@ namespace EmpresaCadetes.Controllers
                 //actualizo bd
                 db.ModificarEstadoPedido(micadeteria.MisPedidos);
                 idpago++;
-                return View(micadeteria);
+                
             }
-            else
-            {
-                return Redirect("CadetesConPedidos");
-            }
-        
 
-          
+            return View(micadeteria);
+
         }
         private bool ControlEntregado(List<Pedidos> CadetesPedidos)
         {

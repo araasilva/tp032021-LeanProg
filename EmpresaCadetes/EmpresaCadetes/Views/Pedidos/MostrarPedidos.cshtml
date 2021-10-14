@@ -8,6 +8,7 @@
 <div class="text-center">
     <br />
     <a class="btn btn-primary" role="button" asp-area="" asp-controller="Cadeteria" asp-action="CadetesConPedidos">Mostrar Cadetes con sus pedidos</a>
+    <a class="btn btn-primary" role="button" asp-area="" asp-controller="Pedidos" asp-action="FormularioPedido">Alta de Pedidos</a>
 </div>
 <br />
 <div class="text-center">
@@ -86,7 +87,7 @@
 
                     </div>
                     <div class="col">
-                        <input class="bg-success" type="submit" value="Seleccionar" />
+                        <input class="btn bg-success" type="submit" value="Seleccionar" />
                     </div>
                     <div class="col">
                         <a name="idPedido" class="btn btn-danger" asp-route-idPedido="@item.Numero" asp-action="EliminarPedido" asp-controller="Pedidos">Eliminar</a>
