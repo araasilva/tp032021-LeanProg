@@ -60,6 +60,64 @@ namespace EmpresaCadetes.Entidades
             }
             
         }
+        //LEER PAGOS
+        public List<Pago> ReadPago()
+        {
+            List<Pago> listapago = null;
+            try
+            {
+                using (FileStream miArchivo= new FileStream(path3,FileMode.Open))
+                {
+                    using (StreamReader reader = new StreamReader(miArchivo))
+                    {
+                        string pagoStr = reader.ReadToEnd();
+                        reader.Close();
+                        reader.Dispose();
+                        if (pagoStr!="")
+                        {
+                            listapago = JsonSerializer.Deserialize<List<Pago>>(pagoStr);
+                        }
+                        else
+                        {
+                            listapago = new List<Pago>();
+                        }
+                    }
+
+                }
+              
+            }
+            catch (Exception ex)
+            {
+
+                string error = ex.ToString();
+            }
+            return listapago;
+        }
+
+        //save pago
+        public void SavePago(Pago miPago)
+        {
+            try
+            {
+                List<Pago> listaPagos = ReadPago();
+                listaPagos.Add(miPago);
+                string pagoJson = JsonSerializer.Serialize(listaPagos);
+                using (FileStream miArchivo=new FileStream(path3,FileMode.Create))
+                {
+                    using (StreamWriter writer = new StreamWriter(miArchivo))
+                    {
+                        writer.Write(pagoJson);
+                        writer.Close();
+                        writer.Dispose();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                string error = ex.ToString();
+            }
+        }
         //LEER CADETES
         public List<Cadete> ReadCadetes()
         {

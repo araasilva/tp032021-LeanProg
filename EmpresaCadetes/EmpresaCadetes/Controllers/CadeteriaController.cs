@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -14,8 +15,8 @@ namespace EmpresaCadetes.Controllers
        
         private readonly Cadeteria micadeteria;
         private readonly DBCadeteria db;
-        static int id = 0;
-
+        private int id = 0;
+        private int idpago = 1;
 
         public CadeteriaController(ILogger<CadeteriaController> logger,Cadeteria micadeteria,DBCadeteria db)
         {
@@ -29,7 +30,15 @@ namespace EmpresaCadetes.Controllers
 
         public IActionResult CargarCadetes(string nombre,string dire,string telefono)
         {
-            id = micadeteria.MisCadetes.Count;
+            if (micadeteria.MisCadetes.Count==0)
+            {
+                id = 0;
+            }
+            else
+            {
+                id = micadeteria.MisCadetes.Count;
+            }
+            
             Cadete newCadete = new Cadete(id,nombre,dire,telefono);
             micadeteria.AgregarCadetes(newCadete);
             db.SaveCadete(newCadete);
@@ -52,20 +61,43 @@ namespace EmpresaCadetes.Controllers
 
         public IActionResult PagarCadete(int idCadete)
         {
+
             string fechaActual=DateTime.Now.ToString();
             float suma = 0;
             Cadete micadete = micadeteria.MisCadetes.Where(cade => cade.Id == idCadete).First();
-            foreach (var pedido in micadete.Listapedidos)
+            if (ControlEntregado(micadete.Listapedidos))
             {
-                if (pedido.Estado=="ENTREGADO")
+                foreach (var pedido in micadete.Listapedidos)
                 {
-                    suma = 100 + suma;
+                    if (pedido.Estado == "ENTREGADO")
+                    {
+                        suma = 100 + suma;
+
+                    }
+                }
+                Pago nuevoPago = new Pago(fechaActual, micadete.Nombre, suma,idpago);
+                db.SavePago(nuevoPago);
+                micadeteria.MisPagos.Add(nuevoPago);
+                //borroPedidodelcadete
+                idpago++;
+            }
+        
+
+            return View(micadeteria);
+        }
+        private bool ControlEntregado(List<Pedidos> CadetesPedidos)
+        {
+            bool resultado = false;
+            foreach (var item in CadetesPedidos)
+            {
+                if (item.Estado == "ENTREGADO")
+                {
+                    resultado = true;
+
                 }
             }
-            
-            return Redirect("CadetesConPedidos");
+            return resultado;
         }
-
         public IActionResult Index()
         {
             _logger.LogInformation("Hello, this is the index!");

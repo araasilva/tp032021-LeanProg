@@ -32,9 +32,11 @@ namespace EmpresaCadetes
         {
             cadeteria.MisCadetes = DB.ReadCadetes();
             cadeteria.MisPedidos = DB.ReadPedidos();
+            cadeteria.MisPagos = DB.ReadPago();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddSingleton(cadeteria);
             services.AddSingleton(DB);
+            
            
         }
 
