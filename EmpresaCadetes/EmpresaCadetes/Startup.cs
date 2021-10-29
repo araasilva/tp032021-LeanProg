@@ -16,9 +16,9 @@ namespace EmpresaCadetes
     public class Startup
     {
        
-        Cadeteria cadeteria = new Cadeteria();
-        DBCadeteria DB = new DBCadeteria();
-        
+       // Cadeteria cadeteria = new Cadeteria(); 
+        //DBCadeteria DB = new DBCadeteria();
+        CadeteDB cadeteDB= new CadeteDB();
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -32,9 +32,9 @@ namespace EmpresaCadetes
         {
             var connectionString=Configuration.GetConecction("Default");
             
-            cadeteria.MisCadetes = DB.ReadCadetes();
-            cadeteria.MisPedidos = DB.ReadPedidos();
-            cadeteria.MisPagos = DB.ReadPago();
+            //cadeteria.MisCadetes = DB.ReadCadetes();
+            //cadeteria.MisPedidos = DB.ReadPedidos();
+            //cadeteria.MisPagos = DB.ReadPago();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddSingleton(cadeteria);
             services.AddSingleton(DB);

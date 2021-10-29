@@ -16,22 +16,28 @@ namespace EmpresaCadetes.Models
             conexion= new SQLiteConnection(connectionString);
         }
         public List<Cadete> getAll(){
+            List<Cadete> listCadete= new List<Cadete>();
             using (SQLiteConnection conexion= new SQLiteConnection(connectionString))
             {
                 conexion.Open();
-                string SQLQuery =  "SELECT * FROM Cadetes WHERE Activo= 1;";
+                string SQLQuery =  "SELECT * FROM Cadetes WHERE Activo = 1;";
                 SQLiteCommand command= new SQLiteCommand(SQLQuery,conexion);
                 SQLDataReader dataReader= command.Execute();
                 while(dataReader.NextResult()){
                         Cadete cadete= new Cadete(){
-                              id  = Convert.ToInt32(dataReader["cadteId"])
-                              nombre = Convert.ToString(dataReader["cadeteNombre"])
+                              id  = Convert.ToInt32(dataReader["cadteId"]),
+                              nombre = Convert.ToString(dataReader["cadeteNombre"]),
+                              direction= Convert.ToString(dataReader["cadateDireccion"]),
 
                         };
 
+                    listCadete.Add(cadete);
                 }
 
+                conexion.Close();
             }
+
+            return listCadete;
         }
     }
 }
