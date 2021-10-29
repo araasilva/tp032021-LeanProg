@@ -30,6 +30,8 @@ namespace EmpresaCadetes
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString=Configuration.GetConecction("Default");
+            
             cadeteria.MisCadetes = DB.ReadCadetes();
             cadeteria.MisPedidos = DB.ReadPedidos();
             cadeteria.MisPagos = DB.ReadPago();
