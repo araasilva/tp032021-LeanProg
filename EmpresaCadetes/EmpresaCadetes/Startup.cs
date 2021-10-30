@@ -16,9 +16,9 @@ namespace EmpresaCadetes
     public class Startup
     {
        
-       // Cadeteria cadeteria = new Cadeteria(); 
-        //DBCadeteria DB = new DBCadeteria();
-        CadeteDB cadeteDB= new CadeteDB();
+       Cadeteria cadeteria = new Cadeteria(); 
+        DBCadeteria DB = new DBCadeteria();
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -30,15 +30,15 @@ namespace EmpresaCadetes
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString=Configuration.GetConecction("Default");
-            
-            //cadeteria.MisCadetes = DB.ReadCadetes();
-            //cadeteria.MisPedidos = DB.ReadPedidos();
-            //cadeteria.MisPagos = DB.ReadPago();
+            //string connectionString=Configuration.GetConecction("Default");
+            RepositorioCadetes repositorioCadetes=new repositoriocadetes(cConfiguration.GetConecction("Default"));
+            cadeteria.MisCadetes = DB.ReadCadetes();
+            cadeteria.MisPedidos = DB.ReadPedidos();
+            cadeteria.MisPagos = DB.ReadPago();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddSingleton(cadeteria);
             services.AddSingleton(DB);
-            
+            services.AddSingleton(repositorioCadetes);
            
         }
 
