@@ -1,4 +1,5 @@
 using EmpresaCadetes.Entidades;
+using EmpresaCadetes.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -18,7 +19,7 @@ namespace EmpresaCadetes
        
        Cadeteria cadeteria = new Cadeteria(); 
         DBCadeteria DB = new DBCadeteria();
-        
+        RepositorioCadetes repositoriocadetes;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,7 +32,7 @@ namespace EmpresaCadetes
         public void ConfigureServices(IServiceCollection services)
         {
             //string connectionString=Configuration.GetConecction("Default");
-            RepositorioCadetes repositorioCadetes=new repositoriocadetes(cConfiguration.GetConecction("Default"));
+            RepositorioCadetes repositorioCadetes=new RepositorioCadetes(Configuration.GetConnectionString("Default"));
             cadeteria.MisCadetes = DB.ReadCadetes();
             cadeteria.MisPedidos = DB.ReadPedidos();
             cadeteria.MisPagos = DB.ReadPago();

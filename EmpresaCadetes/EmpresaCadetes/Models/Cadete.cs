@@ -14,6 +14,10 @@ namespace EmpresaCadetes.Entidades
         private List<Pedidos> listapedidos;
         private float Pagodeldia;
 
+        public Cadete()
+        {
+
+        }
         public Cadete(int id, string nombre, string direcion, string telefono)
         {
             this.id = id;

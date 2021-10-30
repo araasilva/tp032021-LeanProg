@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.SQLite;
-using EmpresaCadetes;
-namespace EmpresaCadetes.Models
+using EmpresaCadetes.Entidades;
+using System.Data.SqlClient;
+
+namespace EmpresaCadetes.Entidades
 {
     public class RepositorioCadetes
     {
@@ -22,15 +24,15 @@ namespace EmpresaCadetes.Models
                 conexion.Open();
                 string SQLQuery =  "SELECT * FROM Cadetes WHERE Activo = 1;";
                 SQLiteCommand command= new SQLiteCommand(SQLQuery,conexion);
-                SQLDataReader dataReader= command.Execute();
-                while(dataReader.NextResult()){
-                        Cadete cadete= new Cadete(){
-                              id  = Convert.ToInt32(dataReader["cadteId"]),
-                              nombre = Convert.ToString(dataReader["cadeteNombre"]),
-                              direction= Convert.ToString(dataReader["cadateDireccion"]),
 
-                        };
+                SQLiteDataReader dataReader = command.ExecuteReader();
+                while(dataReader.Read()){
+                                 Cadete cadete = new Cadete();
+                                cadete.Id = Convert.ToInt32(dataReader["cadteId"]);
+                                 cadete.Nombre = Convert.ToString(dataReader["cadeteNombre"]);
+                                 cadete.Direcion = Convert.ToString(dataReader["cadateDireccion"]);
 
+   
                     listCadete.Add(cadete);
                 }
 

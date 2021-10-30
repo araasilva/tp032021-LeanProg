@@ -15,15 +15,17 @@ namespace EmpresaCadetes.Controllers
        
         private readonly Cadeteria micadeteria;
         private readonly DBCadeteria db;
+        private readonly RepositorioCadetes mirepo;
         private int id = 0;
         private int idpago = 1;
 
-        public CadeteriaController(ILogger<CadeteriaController> logger,Cadeteria micadeteria,DBCadeteria db)
+        public CadeteriaController(ILogger<CadeteriaController> logger,Cadeteria micadeteria,DBCadeteria db, RepositorioCadetes mirepo)
         {
             _logger = logger;
            
             this.micadeteria = micadeteria;
             this.db = db;
+            this.mirepo = mirepo;
             _logger.LogDebug(1, "NLog injected into HomeController");
 
         }
